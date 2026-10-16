@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101827">
+    <title>SAZZ AI - Personal Assistant</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101827;
+            color: white;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 18px;
+        }
+
+        .chat {
+            width: 100%;
+            max-width: 520px;
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 12px 40px #0005;
+        }
+
+        h1 { color: #67e8f9; margin-bottom: 6px; }
+        .subtitle { color: #cbd5e1; }
+
+        .message {
+            background: #334155;
+            padding: 14px;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow-wrap: anywhere;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #64748b;
+            background: #0f172a;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: #06b6d4;
+            color: #082f49;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            color: #94a3b8;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="chat">
+        <h1>🤖 SAZZ AI</h1>
+        <p class="subtitle">Your Personal AI Assistant</p>
+
+        <div class="message">
+            <strong>SAZZ AI:</strong><br>
+            আসসালামু আলাইকুম! আমাকে কিছু জিজ্ঞাসা করো।
+        </div>
+
+        <form method="POST">
+            <input
+                type="text"
+                name="message"
+                placeholder="এখানে প্রশ্ন লেখো..."
+                value="{{ user_message }}"
+                required
+                autocomplete="off"
+            >
+            <button type="submit">Send Message ➤</button>
+        </form>
+
+        {% if reply %}
+        <div class="message">
+            <strong>তোমার প্রশ্ন:</strong><br>
+            {{ user_message }}
+
+            <hr>
+            <strong>SAZZ AI:</strong><br>
+            {{ reply }}
+        </div>
+        {% endif %}
+
+        <footer>SAZZ AI · Built with Python & Flask</footer>
+    </main>
+</body>
+</html>
